@@ -1,9 +1,10 @@
-package main
+/*
+ * @lc app=leetcode.cn id=1390 lang=golang
+ *
+ * [1390] 四因数
+ */
 
-import (
-	"fmt"
-)
-
+// @lc code=start
 func sumFourDivisors(nums []int) int {
 	count := 0
 	for _, i := range nums {
@@ -19,12 +20,9 @@ func sumFourDivisors(nums []int) int {
 				count += k
 			}
 		}
-		fmt.Println(temp_map)
+		// fmt.Println(temp_map)
 	}
 	return count
 }
 
-func main() {
-	nums := sumFourDivisors([]int{21, 4, 7})
-	fmt.Println(nums)
-}
+// @lc code=end
