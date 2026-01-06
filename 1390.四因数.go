@@ -5,24 +5,26 @@
  */
 
 // @lc code=start
-func sumFourDivisors(nums []int) int {
-	count := 0
-	for _, i := range nums {
-		temp_map := make(map[int]bool)
-		for j := 1; j <= int(i/2); j++ {
-			if i%j == 0 {
-				temp_map[j] = true
-			}
-			temp_map[i] = true
+const mx = 100_001
+
+var divisorNum, divisorSum [mx]int
+
+func init() {
+	for i := 1; i < mx; i++ {
+		for j := i; j < mx; j += i { // 枚举 i 的倍数 j
+			divisorNum[j]++ // i 是 j 的因子
+			divisorSum[j] += i
 		}
-		if len(temp_map) == 4 {
-			for k, _ := range temp_map {
-				count += k
-			}
-		}
-		// fmt.Println(temp_map)
 	}
-	return count
+}
+
+func sumFourDivisors(nums []int) (ans int) {
+	for _, x := range nums {
+		if divisorNum[x] == 4 {
+			ans += divisorSum[x]
+		}
+	}
+	return
 }
 
 // @lc code=end
