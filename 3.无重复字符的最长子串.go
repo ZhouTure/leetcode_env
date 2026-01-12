@@ -1,9 +1,10 @@
-package main
+/*
+ * @lc app=leetcode.cn id=3 lang=golang
+ *
+ * [3] 无重复字符的最长子串
+ */
 
-import (
-	"fmt"
-)
-
+// @lc code=start
 func lengthOfLongestSubstring(s string) int {
 	right, left := 0, 0
 	maxlen := 0
@@ -28,7 +29,4 @@ func lengthOfLongestSubstring(s string) int {
 	return maxlen
 }
 
-func main() {
-	num := lengthOfLongestSubstring("bba")
-	fmt.Println(num)
-}
+// @lc code=end

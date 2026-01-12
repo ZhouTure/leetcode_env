@@ -22,10 +22,12 @@ func addStrings(num1 string, num2 string) string {
 		res = append(res, byte(sum%10)+'0')
 		carry = sum / 10
 	}
+
 	// reverse res
 	for l, r := 0, len(res)-1; l < r; l, r = l+1, r-1 {
 		res[l], res[r] = res[r], res[l]
 	}
+
 	return string(res)
 }
 
