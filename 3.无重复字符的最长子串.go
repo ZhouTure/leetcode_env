@@ -11,19 +11,20 @@ func lengthOfLongestSubstring(s string) int {
 	map_wind := make(map[byte]int, len(s))
 	for right < len(s) {
 		if _, ok := map_wind[s[right]]; ok {
-			// res = append(res, "")
-			left = map_wind[s[right]]
-			// fmt.Println(map_wind)
-			if len(map_wind) > maxlen {
-				maxlen = len(map_wind)
-				// fmt.Println(maxlen)
+			// fmt.Println(map_wind[s[right]], right, left)
+			if map_wind[s[right]] <= right && map_wind[s[right]] >= left {
+				left = map_wind[s[right]] + 1
 			}
-
-			map_wind = make(map[byte]int, len(s))
 		}
+
 		map_wind[s[right]] = right
 		right++
-		left = left
+
+		if right-left > maxlen {
+			maxlen = right - left
+		}
+
+		// fmt.Println(right, left, map_wind)
 	}
 
 	return maxlen
